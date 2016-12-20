@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>calculator</title>
+	<style>
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		#box{
+			border: 1px solid #333;
+			width: 300px;
+			margin: 10px auto;
+		}
+		#list{
+			overflow: hidden;
+			width: 260px;
+			margin: 0 auto 10px;
+			border: 1px solid #666;
+		}
+		h3{
+			text-align: center;
+		}
+		#ipt{
+			width: 240px;
+			height: 40px;
+			margin: 18px;
+			padding: 0 10px;
+			border: 1px solid #666;
+			outline: none;
+			text-align: right;
+			font-size: 20px;
+		}
+		#list li{
+			list-style: none;
+			width: 40px;
+			height: 40px;
+			float: left;
+			text-align: center;;
+			line-height: 40px;
+			border: 1px solid #333;
+			margin: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<h3>简单的计算器</h3>
+		<input type="text" id="ipt" />
+		<ul id="list">
+			<li onclick="num(this.innerHTML)">7</li>
+			<li onclick="num(this.innerHTML)">8</li>
+			<li onclick="num(this.innerHTML)">9</li>
+			<li onclick="bac()">←</li>
+			<li onclick="clea()">C</li>
+			<li onclick="num(this.innerHTML)">4</li>
+			<li onclick="num(this.innerHTML)">5</li>
+			<li onclick="num(this.innerHTML)">6</li>
+			<li onclick="num(this.innerHTML)">×</li>
+			<li onclick="num(this.innerHTML)">÷</li>
+			<li onclick="num(this.innerHTML)">1</li>
+			<li onclick="num(this.innerHTML)">2</li>
+			<li onclick="num(this.innerHTML)">3</li>
+			<li onclick="num(this.innerHTML)">+</li>
+			<li onclick="num(this.innerHTML)">-</li>
+			<li onclick="num(this.innerHTML)">0</li>
+			<li onclick="num(this.innerHTML)">00</li>
+			<li onclick="num(this.innerHTML)">.</li>
+			<li onclick="num(this.innerHTML)">%</li>
+			<li onclick="calc()">=</li>
+		</ul>
+	</div>
+</body>
+	<script>
+		var ipt=document.getElementById('ipt');
+		var list=document.getElementById('list');
+		var a=0;
+		function clea(){
+			ipt.value="";
+		}
+		function num(a){
+			if (a=="×") {
+				a="*";
+			}
+			if (a=="÷") {
+				a="/";
+			}
+			if (a=="%") {
+				a=eval(ipt.value)/100;
+				return (ipt.value=a);
+			}
+			ipt.value+=a;
+		}
+		function bac(){
+			ipt.value=ipt.value.substr(0,ipt.value.length-1);
+		}
+		function calc(){
+			ipt.value=eval(ipt.value);
+		}
+	</script>
+</html>
